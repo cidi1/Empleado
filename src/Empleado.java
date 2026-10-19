@@ -1,17 +1,16 @@
 public class Empleado {
-    String nombre;
-    String apellido;
-    double salarioMensual;
+    private String nombre;
+    private String apellido;
+    private double salarioMensual;
 
-
+    // Constructor que inicializa las variables usando el método set para validar
     public Empleado(String nombre, String apellido, double salarioMensual) {
         this.nombre = nombre;
         this.apellido = apellido;
-        if (salarioMensual > 0){
-            this.salarioMensual = salarioMensual;
-        }
+        setSalarioMensual(salarioMensual);
     }
 
+    // Métodos Getters y Setters
     public String getNombre() {
         return nombre;
     }
@@ -33,16 +32,20 @@ public class Empleado {
     }
 
     public void setSalarioMensual(double salarioMensual) {
-        if (salarioMensual > 0){
+        // Validación: Si el salario mensual no es positivo, no se establece su valor
+        if (salarioMensual > 0) {
             this.salarioMensual = salarioMensual;
         }
     }
 
-    double salarioAnual(){
+    // Método para calcular el salario anual
+    public double calcularSalarioAnual() {
         return getSalarioMensual() * 12;
     }
 
-    double salarioFinal(){
-        return getSalarioMensual() * 1.10;
+    // Método para calcular el salario anual con un aumento del 10%
+    public double calcularSalarioConAumento() {
+        double salarioAnualActual = calcularSalarioAnual();
+        return salarioAnualActual * 1.10;
     }
 }
